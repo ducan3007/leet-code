@@ -1,9 +1,10 @@
 // https://leetcode.com/problems/find-the-duplicate-number/description/
 const temp = [1, 2, 3, 4, 2];
 
-const input = [1, 2, 3, 4, 5];
+const input = [4, 1, 2, 3, 4];
 
 function best_solve(nums) {
+  // O(n) time, O(1) space
   let n = nums.length;
   for (let i = 0; i < n; i++) {
     nums[nums[i] % n] = nums[nums[i] % n] + n;
@@ -15,7 +16,9 @@ function best_solve(nums) {
     }
   }
 }
-// Explaination by copilot: https://www.youtube.com/watch?v=32Ll35mhWg0 
+// Explaination: By using arr[arr[i] % n] = arr[arr[i] % n] + n,
+// So, Each element in the array will be added by n, and the duplicate number will be added by 2n.
+// So, if duplicated item > 2n
 
 function turtle_hare(nums) {
   let slow = nums[0];
@@ -31,5 +34,5 @@ function turtle_hare(nums) {
   }
   return slow;
 }
-
+// Explaination: The idea is to use the same idea as the linked list cycle detection.
 console.log(best_solve(input));
